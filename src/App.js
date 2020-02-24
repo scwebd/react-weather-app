@@ -26,8 +26,8 @@ const App = () => {
     const [data, setData] = useState({
         searchTerm: "",
         selectedDay: null,
-        location: "Denver, CO",
-        days: weatherData.data,
+        location: "",
+        days: []
     });
     // destructuring the values in our 'data' state into individual variables
     const { searchTerm, selectedDay, location, days } = data;
