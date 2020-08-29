@@ -65,12 +65,12 @@ export const DayWrapper = styled.section`
         width: 80px;
     }
     .card {
-        border: ${props => props.isSelected ? tealOutline : outline};
+        border: ${({ isSelected }) => isSelected ? tealOutline : outline};
     }
     .card-header {
-        background: ${props => props.isSelected ? teal : null};
-        border-bottom: ${props => props.isSelected ? tealOutline : outline};
-        color: ${props => props.isSelected ? "#fff" : null};
+        background: ${({ isSelected }) => isSelected ? teal : null};
+        border-bottom: ${({ isSelected }) => isSelected ? tealOutline : outline};
+        color: ${({ isSelected }) => isSelected ? "#fff" : null};
         font-weight: 700;
     }
     .card-body {

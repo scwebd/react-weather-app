@@ -1,19 +1,18 @@
 import axios from "axios";
 const googleKey = process.env.REACT_APP_GOOGLE_KEY;
-const weatherbitKey = process.env.REACT_APP_WEATHERBIT_KEY;
+const weatherbitKey = process.env.REACT_APP_WEATHER_KEY;
 
 export default {
     getWeather: function(location) {
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${googleKey}`)
             .then(res => {
-                if (!res.data.results.length) {
-                    return alert("Not a valid location!");
-                }
+                // if no matching locations are found, break out/don't hit WeatherBit API
+                if (!res.data.results.length) return alert("Not a valid location!");
 
+                // else extract the lat/lng (and rename lng to lon)
                 const { lat, lng: lon } = res.data.results[0].geometry.location;
+                // then make call to WeatherBit API using lat/lon
                 return axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&units=I&days=7&key=${weatherbitKey}`);
-
-
             })
             .catch(err => {
                 console.log(err);

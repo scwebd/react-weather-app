@@ -16,7 +16,7 @@ const SearchForm = ({ searchTerm, handleInputChange, handleFormSubmit }) => {
                     onChange={handleInputChange}
                 />
             </FormGroup>
-            <Button onClick={handleFormSubmit}>Search</Button>
+            <Button>Search</Button>
         </FormWrapper>
     );
 }
